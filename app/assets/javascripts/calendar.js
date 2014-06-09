@@ -20,10 +20,12 @@ function updateCalendar(newDates) {
   
   $('.week-scroll-display').text( months[weekStart.getMonth()] + " " + weekStart.getUTCDate() + ' - ' + weekEnd.getUTCDate() );
   
-  $('span#year').empty().text(weekEnd.getUTCFullYear() )
-
+  $('span#year').empty().text(weekEnd.getUTCFullYear() );
+  $('.dates').empty();
   for(var i = 0; i < dates.length; i++) {
-    $('div#' + dates[i].day ).append(dates[i].appointments)
+      $('.dates')
+        .append("<div class='day' id="+i+">" + dates[i].day + "</div>")
+      $("div.day#"+i).addClass("color-" + i % 2)
   }
 
 }
