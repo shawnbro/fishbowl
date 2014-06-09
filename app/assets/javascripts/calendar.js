@@ -18,9 +18,9 @@ function updateCalendar(newDates) {
   var weekEnd = new Date(dates[4].day);
   var year = weekEnd.getUTCFullYear();
   
-  $('.week-scroll').text( months[weekStart.getMonth()] + " " + weekStart.getUTCDate() + ' - ' + weekEnd.getUTCDate() );
+  $('.week-scroll-display').text( months[weekStart.getMonth()] + " " + weekStart.getUTCDate() + ' - ' + weekEnd.getUTCDate() );
   
-  $('.week-scroll').append(" <span>" + weekEnd.getUTCFullYear() + "</span>")
+  $('span#year').empty().text(weekEnd.getUTCFullYear() )
 
   for(var i = 0; i < dates.length; i++) {
     $('div#' + dates[i].day ).append(dates[i].appointments)
