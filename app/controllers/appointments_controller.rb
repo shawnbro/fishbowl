@@ -38,10 +38,13 @@ class AppointmentsController < ApplicationController
 
   end
   def new_week
+    @user = User.find_by_id(session[:user_id])
     @weekdays = (Date.today + params[:week].to_i.week).all_week.to_a[0..4]
-    @apps = @weekdays.map do |day|
-      Hash[day: day, appointments: Appointment.where(date: day)]
-    end
-    render json: @apps.to_json
+    @appointments = Appointment.all
+    render partial: "calendar", locals: {appointments: @appointments} 
+  end
+  def update_week_scroll
+    render partial: "week_scroll"
+    r
   end
 end
