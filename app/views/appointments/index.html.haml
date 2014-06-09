@@ -6,8 +6,8 @@
   .js-prev-week
   .week-scroll-display
     = (@weekdays[0].strftime("%B %d ") + @weekdays[4].strftime("- %d")).gsub(/\D0/, " ")
-    %span#year
-      = @weekdays[4].strftime(" %Y")
+  %span#year
+    = @weekdays[4].strftime(" %Y")
   .js-next-week
 .calendar
   .times

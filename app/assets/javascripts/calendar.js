@@ -24,7 +24,7 @@ function updateCalendar(newDates) {
   $('.dates').empty();
   for(var i = 0; i < dates.length; i++) {
       $('.dates')
-        .append("<div class='day' id="+i+">" + dates[i].day + "</div>")
+        .append("<div class='day' id="+i+">" + "<div class='day-label'>"+dates[i].day + "</div></div>")
       $("div.day#"+i).addClass("color-" + i % 2)
   }
 
