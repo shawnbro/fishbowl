@@ -1,9 +1,11 @@
 .nav-bar
+  .logout
+    = link_to "Sign Out", session_path(@user), :method => :delete
   = button_to "Book the Fishbowl", new_appointment_path, class: "button primary", id: "book-fishbowl", method: :get
-  .week-scroll
-    = (@weekdays[0].strftime("%B %d ") + @weekdays[4].strftime("- %d")).gsub(/\D0/, " ")
-    %span#year
-      = @weekdays[4].strftime(" %Y")
+.week-scroll
+  = (@weekdays[0].strftime("%B %d ") + @weekdays[4].strftime("- %d")).gsub(/\D0/, " ")
+  %span#year
+    = @weekdays[4].strftime(" %Y")
 .calendar
   .times
     %ul 
@@ -61,8 +63,6 @@
         /         = appointment.start_time
         /       .end_time
         /         = appointment.end_time
-.logout
-  = link_to "Logout", session_path(@user), :method => :delete
 .next-week   
   %p Next Week
 .prev-week
