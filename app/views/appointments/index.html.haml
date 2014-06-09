@@ -1,0 +1,119 @@
+.nav-bar
+  = button_to "Book the Fishbowl", new_appointment_path, class: "button primary", id: "book-fishbowl", method: :get
+  .week-scroll
+    = (@weekdays[0].strftime("%B %d ") + @weekdays[4].strftime("- %d")).gsub(/\D0/, " ")
+    %span#year
+      = @weekdays[4].strftime(" %Y")
+.calendar
+  .times
+    %ul 
+      %li
+        %span
+          8 AM
+      %li
+        %span
+          9 AM
+      %li
+        %span
+          10 AM
+      %li
+        %span
+          11 AM
+      %li
+        %span
+          12 PM
+      %li
+        %span
+          1 PM
+      %li
+        %span
+          2 PM
+      %li
+        %span
+          3 PM
+      %li
+        %span
+          4 PM
+      %li
+        %span
+          5 PM
+      %li
+        %span
+          6 PM
+      %li
+        %span
+          7 PM
+      %li
+        %span
+          8 PM
+  .dates
+    - @weekdays.each do |day|
+      .day{:class => "color-#{@weekdays.index(day) % 2}"}
+        .day-label
+          = day.strftime("%A")[0..2]
+          = day.to_s.split('-')[1..2].join('/').remove(/\A0/).gsub(/\D(0)/, '/')
+        / - @appointments.each do |appointment|
+        /   - if appointment.date == day
+        /     .appointment 
+        /       .user
+        /         = @user.first_name
+        /       .start_time
+        /         = appointment.start_time
+        /       .end_time
+        /         = appointment.end_time
+.logout
+  = link_to "Logout", session_path(@user), :method => :delete
+.next-week   
+  %p Next Week
+.prev-week
+  %p Previous Week
+
+:javascript
+  var months = {
+    0: "January",
+    1: "February",
+    2: "March",
+    3: "April",
+    4: "May",
+    5: "June",
+    6: "July",
+    7: "August",
+    8: "Septemer",
+    9: "October",
+    10: "November",
+    11: "December"
+  }
+  function updateCalendar(newDates) {
+    dates = newDates.responseJSON;
+    weekStart = new Date(dates[0]);
+    weekEnd = new Date(dates[4]);
+    year = weekEnd.getUTCFullYear();
+    
+    $('.week-scroll').text( months[weekStart.getMonth()] + " " + weekStart.getUTCDate() + ' - ' + weekEnd.getUTCDate() );
+    
+    $('.week-scroll').append(" <span>" + weekEnd.getUTCFullYear() + "</span>")
+  
+  }
+  $( document ).ready(function() {
+    var week = 0;
+    $('div.next-week').click(function() {
+      week += 1;
+      getDates(week)
+    })
+
+    $('div.prev-week').click(function() {
+      week -= 1;
+      getDates(week)
+    })
+
+    function getDates(week) {
+      var newDates = $.get( "/appointments/new_week", { week: week }).done(function() {
+        dates = newDates
+        updateCalendar(newDates);
+      }) 
+    }
+
+
+  }) //end doc ready
+
+

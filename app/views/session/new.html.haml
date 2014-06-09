@@ -1,0 +1,23 @@
+.session-new
+  .content
+    .header
+      %h1 
+        DevShop&apos;s 
+        %span
+          FishBowl
+        Scheduler
+
+    .errors
+      = @message
+    .login-wrapper
+      .fishbowl
+        = image_tag "fishbowl.png"
+      .login
+        = form_for :session, :url => {:controller => 'session', :action => 'create'} do |f|
+          = f.label :email 
+          = f.text_field :email
+
+          = f.label :password
+          = f.password_field :password
+
+          = f.submit 'Log in', class: "secondary"

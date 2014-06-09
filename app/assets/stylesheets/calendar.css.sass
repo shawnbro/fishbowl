@@ -1,0 +1,47 @@
+@import "variables"
+.nav-bar
+  height: 100px
+  .week-scroll
+    font-family: $main-font
+    font-size: 1.8em
+    color: $dark-teal
+    text-align: center
+    margin: 1.5em
+    span
+      color: $gray
+.calendar
+  width: 100%
+  .times
+    width: 10%
+    background: $dark-teal
+    color: #fff
+    font-family: $main-font
+    font-size: .7em
+    text-align: right
+    display: inline-block
+    li
+      height: 75px
+      border-bottom: 1px solid $gray
+      span
+        display: inline-block
+        margin: .7em 
+
+  .dates
+    width: 90%
+    display: inline-block
+    position: absolute
+    .day
+      min-width: 20%
+      height: 985px
+      display: inline-block
+      background: $medium-teal
+      float: left
+      .day-label
+        margin-top: -1.7em
+        font-family: $main-font
+        font-size: .7em
+        text-align: center
+        color: $dark-teal
+        text-transform: uppercase
+    .day.color-1
+      background: $light-teal

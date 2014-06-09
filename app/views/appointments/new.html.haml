@@ -1,0 +1,16 @@
+%h1 Schedule a Meeting in the Glass Box
+- if @message
+  .errors
+    - @message.each_pair do |message|
+      .error
+        %p  
+          = message.join(" ")
+
+= form_for :appointment, :url => {:controller => 'appointments', :action => 'create'} do |f|
+  Date
+  = f.date_field :date
+  Start Time: 
+  = f.time_field :start_time
+  End Time
+  = f.time_field :end_time
+  = f.submit 'Create Appointment'

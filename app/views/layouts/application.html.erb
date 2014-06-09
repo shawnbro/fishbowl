@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GlassBox</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= yield %>
+
+</body>
+</html>

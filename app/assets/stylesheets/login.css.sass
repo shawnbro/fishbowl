@@ -1,0 +1,42 @@
+@import "variables"
+@import "form-elements"
+.session-new
+  position: absolute
+  top: 0
+  bottom: 0
+  right: 0
+  left: 0
+  background: $medium-teal
+  .content
+    padding: 3em
+    input
+      display: block
+    .header
+      text-align: center
+      h1
+        font-size: 40px
+        font-family: $main-font
+        color: #fff
+        span
+          color: $orange
+    .login-wrapper
+      margin: 3em auto 0
+      width: 70%
+      .fishbowl
+        width: 60%
+        display: inline-block
+        @media (max-width: 480px)
+          width: 100%
+        img
+          width: 100%
+      .login
+        padding-left: 2em
+        position: absolute
+        display: inline-block
+        font-family: $main-font
+        font-size: .5em
+        color: #fff
+        text-transform: uppercase
+        @media (max-width: 480px)
+          margin-top: 3em
+          padding-left: 0
