@@ -12,6 +12,15 @@ var months = {
   10: "November",
   11: "December"
 }
+
+var weekdays = {
+  0: "Sun",
+  1: "Mon",
+  2: "Tue",
+  3: "Wed",
+  4: "Thu",
+  5: "Fri"
+}
 function updateCalendar(newDates) {
   dates = newDates.responseJSON;
   var weekStart = new Date(dates[0].day);
@@ -23,8 +32,9 @@ function updateCalendar(newDates) {
   $('span#year').empty().text(weekEnd.getUTCFullYear() );
   $('.dates').empty();
   for(var i = 0; i < dates.length; i++) {
+      var day = new Date(dates[i].day)
       $('.dates')
-        .append("<div class='day' id="+i+">" + "<div class='day-label'>"+dates[i].day + "</div></div>")
+        .append("<div class='day' id="+i+">" + "<div class='day-label'>"+ weekdays[day.getUTCDay()] + " " + parseInt(day.getUTCMonth() + 1) +"/"+day.getUTCDate()+ "</div></div>")
       $("div.day#"+i).addClass("color-" + i % 2)
   }
 
