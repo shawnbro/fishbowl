@@ -1,5 +1,5 @@
 @import "variables"
-input
+input, a.button
   width: 170px
   border: none
   height: 2.3em
@@ -7,13 +7,22 @@ input
   padding: .2em
   margin-bottom: 1em
   margin-left: 0
+  font-family: $main-font
 
 label
   display: inline-block
   margin-bottom: .5em
-  font-size: 1.2em
+  font-size: .7em
+  text-transform: uppercase
+  color: #fff
+  font-family: $main-font
+  clear: both
 
-input[type=submit], .button
+select
+  display: block
+
+
+input[type=submit], a.button
   margin-top: 1em
   min-width: 100px
   height: 3em

@@ -1,6 +1,11 @@
 @import "variables"
 .nav-bar
   position: relative
+  background: white
+  .small_logo
+    margin: 1em
+    width: 45px
+    float: left
   .logout
     display: inline-block
     float: right
@@ -80,11 +85,19 @@
         color: $dark-teal
         text-transform: uppercase
       .appointment
+        position: absolute
+        width: 16.5%
         font-family: $main-font
         color: $dark-teal
+        padding: .5em 1em
         background: rgba(255, 255, 255, .8)
         border-radius: 5px
         margin: 5px
+        .time
+          font-size: .7em
+        .user
+          font-size: 1.3em
+          margin: .5em 0 .2em
 
     .day.color-1
       background: $light-teal

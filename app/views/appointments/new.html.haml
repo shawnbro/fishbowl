@@ -1,16 +1,26 @@
-%h1 Schedule a Meeting in the Glass Box
-- if @message
-  .errors
-    - @message.each_pair do |message|
-      .error
-        %p  
-          = message.join(" ")
+.nav-bar
+  = link_to root_path do
+    = image_tag "small_logo_fish.png", class: "small_logo"
+  .logout
+    = link_to "Sign Out", session_path(@user), :method => :delete
+.main
+  .container
+    .swimming-fish
+      = image_tag "fish_2.png"
+    .booking
+      %h1 Book the Fishbowl
+      - if @message
+        .errors
+          - @message.each_pair do |message|
+            .error
+              %p  
+                = message.join(" ")
 
-= form_for :appointment, :url => {:controller => 'appointments', :action => 'create'} do |f|
-  Date
-  = f.date_field :date
-  Start Time: 
-  = f.time_field :start_time
-  End Time
-  = f.time_field :end_time
-  = f.submit 'Create Appointment'
+      = form_for :appointment, :url => {:controller => 'appointments', :action => 'create'} do |f|
+        = f.label :date
+        = f.date_field :date
+        = f.label :start_time 
+        = f.time_field :start_time
+        = f.label :end_time
+        = f.time_field :end_time
+        = f.submit 'Save', class: "button primary"
