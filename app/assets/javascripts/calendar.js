@@ -13,9 +13,9 @@ var months = {
   11: "December"
 }
 function updateCalendar(newDates) {
-  var dates = newDates.responseJSON;
-  var weekStart = new Date(dates[0]);
-  var weekEnd = new Date(dates[4]);
+  dates = newDates.responseJSON;
+  var weekStart = new Date(dates[0].day);
+  var weekEnd = new Date(dates[4].day);
   var year = weekEnd.getUTCFullYear();
   
   $('.week-scroll').text( months[weekStart.getMonth()] + " " + weekStart.getUTCDate() + ' - ' + weekEnd.getUTCDate() );
@@ -27,7 +27,8 @@ $( document ).ready(function() {
   var week = 0;
   $('div.next-week').click(function() {
     week += 1;
-    getDates(week)
+    getDates(week);
+    console.log('hi');
   })
 
   $('div.prev-week').click(function() {
