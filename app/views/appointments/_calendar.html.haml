@@ -5,7 +5,8 @@
       = day.to_s.split('-')[1..2].join('/').remove(/\A0/).gsub(/\D(0)/, '/')
     - @appointments.each do |appointment|
       - if appointment.date == day
-        .appointment 
+        - position = (appointment.start_time.strftime("%k").to_i - 8) * 76 +13
+        .appointment{:style => "margin-top:#{position}px"} 
           .time
             = (appointment.start_time.strftime("%l:%M %p -") + appointment.end_time.strftime("%l:%M %p")).remove(/:+0{2}/)
           .user
