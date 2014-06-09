@@ -21,6 +21,12 @@ var weekdays = {
   4: "Thu",
   5: "Fri"
 }
+function getDates(week) {
+  var newDates = $.get( "/appointments/new_week", { week: week }).done(function() {
+    dates = newDates
+    updateCalendar(newDates);
+  }) 
+}
 function updateCalendar(newDates) {
   dates = newDates.responseJSON;
   var weekStart = new Date(dates[0].day);
@@ -51,13 +57,4 @@ $( document ).ready(function() {
     week -= 1;
     getDates(week)
   })
-
-  function getDates(week) {
-    var newDates = $.get( "/appointments/new_week", { week: week }).done(function() {
-      dates = newDates
-      updateCalendar(newDates);
-    }) 
-  }
-
-
 }) //end doc ready

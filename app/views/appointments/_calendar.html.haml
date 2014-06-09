@@ -6,9 +6,7 @@
     - @appointments.each do |appointment|
       - if appointment.date == day
         .appointment 
-          .start_time
-            = appointment.start_time
-          .end_time
-            = appointment.end_time
+          .time
+            = (appointment.start_time.strftime("%l:%M %p -") + appointment.end_time.strftime("%l:%M %p")).remove(/:+0{2}/)
           .user
             = @user.first_name
