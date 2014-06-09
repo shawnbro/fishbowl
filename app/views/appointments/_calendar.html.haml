@@ -3,12 +3,12 @@
     .day-label{:id => day}
       = day.strftime("%A")[0..2]
       = day.to_s.split('-')[1..2].join('/').remove(/\A0/).gsub(/\D(0)/, '/')
-      - @appointments.each do |appointment|
-        - if appointment.date == day
-          .appointment 
-            .user
-              = @user.first_name
-            .start_time
-              = appointment.start_time
-            .end_time
-              = appointment.end_time
+    - @appointments.each do |appointment|
+      - if appointment.date == day
+        .appointment 
+          .start_time
+            = appointment.start_time
+          .end_time
+            = appointment.end_time
+          .user
+            = @user.first_name
