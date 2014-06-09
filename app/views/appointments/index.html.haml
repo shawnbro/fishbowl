@@ -47,20 +47,7 @@
         %span
           8 PM
   .dates
-    - @weekdays.each do |day|
-      .day{:class => "color-#{@weekdays.index(day) % 2}"}
-        .day-label
-          = day.strftime("%A")[0..2]
-          = day.to_s.split('-')[1..2].join('/').remove(/\A0/).gsub(/\D(0)/, '/')
-        - @appointments.each do |appointment|
-          - if appointment.date == day
-            .appointment 
-              .user
-                = @user.first_name
-              .start_time
-                = appointment.start_time
-              .end_time
-                = appointment.end_time
+    = render partial: "appointment"
 .logout
   = link_to "Logout", session_path(@user), :method => :delete
 .next-week   

@@ -22,13 +22,16 @@ function updateCalendar(newDates) {
   
   $('.week-scroll').append(" <span>" + weekEnd.getUTCFullYear() + "</span>")
 
+  for(var i = 0; i < dates.length; i++) {
+    $('div#' + dates[i].day ).append(dates[i].appointments)
+  }
+
 }
 $( document ).ready(function() {
   var week = 0;
   $('div.next-week').click(function() {
     week += 1;
     getDates(week);
-    console.log('hi');
   })
 
   $('div.prev-week').click(function() {
