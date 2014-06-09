@@ -29,12 +29,13 @@ function updateCalendar(newDates) {
 }
 $( document ).ready(function() {
   var week = 0;
-  $('div.next-week').click(function() {
+  
+  $('div.js-next-week').click(function() {
     week += 1;
     getDates(week);
   })
 
-  $('div.prev-week').click(function() {
+  $('div.js-prev-week').click(function() {
     week -= 1;
     getDates(week)
   })

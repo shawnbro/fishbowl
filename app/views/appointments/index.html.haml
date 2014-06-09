@@ -2,12 +2,12 @@
   .logout
     = link_to "Sign Out", session_path(@user), :method => :delete
   = button_to "Book the Fishbowl", new_appointment_path, class: "button primary", id: "book-fishbowl", method: :get
+.js-prev-week
 .week-scroll
-  .left-arrow
   = (@weekdays[0].strftime("%B %d ") + @weekdays[4].strftime("- %d")).gsub(/\D0/, " ")
   %span#year
     = @weekdays[4].strftime(" %Y")
-  .right-arrow
+.js-next-week
 .calendar
   .times
     %ul 
